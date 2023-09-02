@@ -19,19 +19,19 @@ Client visits Broker and unique token is generated. When new token is generated 
 ### Server
 Install this package using composer.
 ```shell
-$ composer require AdlyAlimin/laravel-sso
+$ composer require dannymay9082/laravel-sso
 ```
 
 
 Copy config file to Laravel project `config/` folder.
 ```shell
-$ php artisan vendor:publish --provider="AdlyAlimin\LaravelSSO\SSOServiceProvider"
+$ php artisan vendor:publish --provider="dannymay9082\LaravelSSO\SSOServiceProvider"
 ```
 
 
 Create table where all brokers will be saved.
 ```shell
-$ php artisan migrate --path=vendor/AdlyAlimin/laravel-sso/database/migrations
+$ php artisan migrate --path=vendor/dannymay9082/laravel-sso/database/migrations
 ```
 
 Edit your `app/Http/Kernel.php` by removing throttle middleware and adding sessions middleware to `api` middlewares array.
@@ -56,13 +56,13 @@ $ php artisan sso:broker:create {name}
 ### Broker
 Install this package using composer.
 ```shell
-$ composer require AdlyAlimin/laravel-sso
+$ composer require dannymay9082/laravel-sso
 ```
 
 
 Copy config file to Laravel project `config/` folder.
 ```shell
-$ php artisan vendor:publish --provider="AdlyAlimin\LaravelSSO\SSOServiceProvider"
+$ php artisan vendor:publish --provider="dannymay9082\LaravelSSO\SSOServiceProvider"
 ```
 
 
@@ -86,12 +86,12 @@ SSO_BROKER_SECRET=
 
 
 
-Edit your `app/Http/Kernel.php` by adding `\AdlyAlimin\LaravelSSO\Middleware\SSOAutoLogin::class` middleware to `web` middleware group. It should look like this:
+Edit your `app/Http/Kernel.php` by adding `\dannymay9082\LaravelSSO\Middleware\SSOAutoLogin::class` middleware to `web` middleware group. It should look like this:
 ```php
 protected $middlewareGroups = [
         'web' => [
             ...
-            \AdlyAlimin\LaravelSSO\Middleware\SSOAutoLogin::class,
+            \dannymay9082\LaravelSSO\Middleware\SSOAutoLogin::class,
         ],
 
         'api' => [
@@ -106,7 +106,7 @@ Last but not least, you need to edit `app/Http/Controllers/Auth/LoginController.
 ```php
 protected function attemptLogin(Request $request)
 {
-    $broker = new \AdlyAlimin\LaravelSSO\LaravelSSOBroker;
+    $broker = new \dannymay9082\LaravelSSO\LaravelSSOBroker;
     
     $credentials = $this->credentials($request);
     return $broker->login($credentials['email'], $credentials['password']);
@@ -114,7 +114,7 @@ protected function attemptLogin(Request $request)
 
 public function logout(Request $request)
 {
-    $broker = new \AdlyAlimin\LaravelSSO\LaravelSSOBroker;
+    $broker = new \dannymay9082\LaravelSSO\LaravelSSOBroker;
     
     $broker->logout();
     
