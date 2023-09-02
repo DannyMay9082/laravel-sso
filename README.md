@@ -6,10 +6,6 @@
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-
-This package based on [Simple PHP SSO skeleton](https://github.com/AdlyAlimin/php-simple-sso) package and made suitable for Laravel framework.
-
-This package is fork from [Simple PHP SSO skeleton](https://github.com/AdlyAlimin/php-simple-sso)
 ### Requirements
 * Laravel 7.4+
 * PHP 7.1+
